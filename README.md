@@ -1,6 +1,6 @@
 # Lab-9
 
-#Objective:
+# Objective:
 
 To create an input mask that will format telephone numbers in real-time. 
 The user is presnted with a text box to enter a phone number.
