@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 9 Phone Number Task</title>
+</head>
+<body>
+    <h5>Please enter a phone number</h5>
+    <input type="text" id="num" onkeypress="myKeyPress(this);"/>
+</body>
+<script>
+    function myKeyPress(x){
+        var mytextbox = document.getElementById('num').value
+        var keyPressed;
+        if (window.event) {
+            keyPressed = x.keyCode;
+        } else if (x.which) { 
+            keyPressed = x.which;
+        }
+        var y = String.fromCharCode(keyPressed);
+        var z = formatPNum(mytextbox);
+        console.log("Key Pressed = " + y);
+        console.log(" Formatted = " + z);
+        //if statement doesn't allow the textbox to accept more than 10 characters
+        if (z.length>11){
+            document.getElementById('num').value = z.slice(0, 12)
+            event.preventDefault(); 
+        }
+        else{
+            document.getElementById('num').value = z
+        }
+    }
+    //function formats the phone number
+    function formatPNum(number) {
+       // - is appended after 3 characters entered
+        if(number.length == 3){
+            number = number.slice(0, 3) + "-";
+        }
+         // - is appended after 6 characters entered
+        else if (number.length > 4 && number.length < 7){
+            number = number.slice(0, 3) + "-" + number.slice(4);
+        }
+        else if (number.length == 7){
+            number = number.slice(0, 3) + "-" + number.slice(4, 7) + "-";
+        }
+        else if (number.length > 7){
+            number = number.slice(0, 3) + "-" + number.slice(4, 7) + "-" + number.slice(8);
+        }
+        return number;
+    }
+</script>
+</html>
